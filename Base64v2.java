@@ -6,14 +6,14 @@ import java.io.UnsupportedEncodingException;
  */
 public class Base64v2 {
 	/**
-	 * Encode an array of bytes into a base64v2 string<br><br>
-	 * Standard base64 uses "+" and "/" which aren't URL friendly.
-	 * I changed them to "-" and "_" to make it URL and file friendly.
-	 * I also changed the order so that the output is naturally sortable
+	 * Encode an array of bytes into a base64v2 String.<br><br>
+	 * Standard base64 uses "+" and "/" which aren't URL friendly.<br>
+	 * I changed them to "-" and "_" to make it URL and file friendly.<br>
+	 * I also changed the order so that the output is naturally sortable.
 	 *
 	 * @param input The array of bytes to encode
 	 *
-	 * @return A string to append as a parameter on an URL
+	 * @return The base64v2 String
 	 */
 	public static String encode(byte[] input) {
 		char[] lookupTable = {
@@ -43,15 +43,25 @@ public class Base64v2 {
 		return new String(output);
 	}
 
+	/**
+	 * Encode a String into a base64v2 String.<br><br>
+	 * Standard base64 uses "+" and "/" which aren't URL friendly.<br>
+	 * I changed them to "-" and "_" to make it URL and file friendly.<br>
+	 * I also changed the order so that the output is naturally sortable.
+	 *
+	 * @param input The String to encode
+	 *
+	 * @return The base64v2 String
+	 */
 	public static String encode(String input) {
 		return encode(input.getBytes());
 	}
 
 	/**
-	 * Decode a base64v2 string into an array of bytes<br>
+	 * Decode a base64v2 String into an array of bytes.<br>
 	 *
-	 * @param input The string to decode
-	 * @param dirty True if the data may contain non-base64 characters (ie: white space, padding)
+	 * @param input The String to decode
+	 * @param dirty True if the data may contain non-base64v2 characters (ie: white space, padding)
 	 *
 	 * @return The array of decoded bytes
 	 */
@@ -86,11 +96,24 @@ public class Base64v2 {
 		return output;
 	}
 
+
+	/**
+	 * Decode a base64v2 String into a String.<br>
+	 *
+	 * @param input The String to decode
+	 * @param dirty True if the data may contain non-base64v2 characters (ie: white space, padding)
+	 *
+	 * @return The array of decoded bytes
+	 */
 	public static String decodeToString(String input, boolean dirty) {
 		return new String(decode(input, dirty));
 	}
 
-	/** Encode the current time into a base64 string */
+	/**
+	 * Encode the current time into a base64v2 String.
+	 *
+	 * @return The current time as a base64v2 String
+	 */
 	public static String encodeNow() {
 		long value = System.currentTimeMillis();
 		int len = 8;
@@ -108,6 +131,14 @@ public class Base64v2 {
 		return encode(date);
 	}
 
+	/**
+	 * Decode a base64v2 time into a long.
+	 *
+	 * @param input The String to decode
+	 * @param dirty True if the data may contain non-base64v2 characters (ie: white space, padding))
+	 *
+	 * @return The time in milliseconds as a long
+	 */
 	public static long decodeTime(String time, boolean dirty) {
 		long theTime = 0;
 		byte data[] = decode(time, dirty);
@@ -119,9 +150,9 @@ public class Base64v2 {
 	}
 	
 	/**
-	 * Convert a string to an array of bytes
+	 * Convert a String to an array of bytes
 	 *
-	 * @param input The string to convert
+	 * @param input The String to convert
 	 *
 	 * @return An array of bytes in UTF-8 format
 	 */
@@ -136,11 +167,11 @@ public class Base64v2 {
 	}
 	
 	/**
-	 * Convert an array of bytes into a string
+	 * Convert an array of bytes into a String
 	 *
 	 * @param input An array of bytes in UTF-8 format
 	 *
-	 * @return The converted string
+	 * @return The converted String
 	 */
 	public static String bytesToString(byte[] input) {
 		String output = null;
