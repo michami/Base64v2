@@ -1,0 +1,11 @@
+This is my implementation of a Base 64 encoder and decoder written in Java.
+
+This method is different from the standard in that:
+
+1) It only uses URL and file name safe characters (a-f, A-F, 0-9, dash, underscore)
+
+2) The output is sortable in the same order as the original value (alphabetical order is kept)
+
+3) It neither produces or requires padding characters (ie: "#" characters)
+
+4) It has an added function for producing Base 64 timestamps using the fewest possible characters
